@@ -1,5 +1,5 @@
 allRoutes.push({
-    notification: { text: "「のぞみ」「みずほ」号指定席を利用の際は「のぞみ・みずほ号指定席特急料金」が加算されます。" },
+    notice: { text: "「のぞみ」「みずほ」号指定席を利用の際は「のぞみ・みずほ号指定席特急料金」が加算されます。" },
     info: { name: "東海道新幹線", color: "#0011ff" },
     types: [
         { id: 'nozomi', name: 'のぞみ', color: '#e7d000' },

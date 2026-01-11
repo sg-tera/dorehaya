@@ -18,30 +18,31 @@
     allRoutes.forEach((route) => {
 
         // 変数を短く使えるように取り出す
+        const routeNotice = route.notice
         const routeInfo = route.info;
         const lineTypes = route.types;
         const stations = route.stations;
 
         // 1つの路線のHTML生成
         let html = `
-        ${route.notice && route.notice.text ? `<div class="notice-container">${route.notice.text}</div>` : ''}
-          <div class="app-container">
-            <div class="line-header-tab" style="background-color: ${routeInfo.color};">
-            ${routeInfo.code != null ? `<span class="line-code-badge">${routeInfo.code}</span>` : ''}
-            <span class="line-name-text">${routeInfo.name}</span>
+            ${routeNotice && routeNotice.text != null ? `<div class="notice-container">${routeNotice.text}</div>` : ''}
+            <div class="app-container">
+                <div class="line-header-tab" style="background-color: ${routeInfo.color};">
+                ${routeInfo.code != null ? `<span class="line-code-badge">${routeInfo.code}</span>` : ''}
+                <span class="line-name-text">${routeInfo.name}</span>
             </div>
 
             <div class="layout-wrapper">
-              <div class="legend-col">
-                <div class="header-spacer"></div>
-                <div class="legend-tracks">
-                  ${lineTypes.map(type =>
+                <div class="legend-col">
+                    <div class="header-spacer"></div>
+                    <div class="legend-tracks">
+                    ${lineTypes.map(type =>
             `<div class="label-box" style="background-color: ${type.color};">${type.name}</div>`
         ).join('')}
                 </div>
               </div>
         
-              <div class="scroll-area">
+                <div class="scroll-area">
                 <ul class="route-list">
         `;
 
