@@ -85,7 +85,7 @@ body {
     color: #333;
     font-size: 12px;
     font-family: "Reddit Sans";
-    font-weight: bold;
+    font-weight: 900;
     border-radius: 4px;
     box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.3);
     line-height: 1;
@@ -104,8 +104,6 @@ body {
 .layout-wrapper {
     display: flex;
     background-color: #fff;
-    /* 影や角丸は親の app-container に移したので削除またはリセット */
-    box-shadow: none;
     border-radius: 0;
     border-top: none;
     /* ヘッダーとくっつける */
@@ -133,7 +131,7 @@ body {
 /* --- 高さ・隙間の同期設定 --- */
 .header-spacer,
 .station-name {
-    height: 120px;
+    height: 140px;
     margin-bottom: 0px;
 }
 
@@ -179,7 +177,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 60px;
+    width: 80px;
     /* 駅の幅 */
     flex-shrink: 0;
     /* ★重要：画面が狭くても駅幅を絶対に縮めない設定 */
@@ -301,8 +299,11 @@ body {
     color: #414141;
     writing-mode: horizontal-tb;
     text-align: center;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
+    width: 100%;
     line-height: 1.4;
+
 }
 
 .transfer::before {
