@@ -9,7 +9,7 @@ allRoutes.push({
     stations: [
         {
             name: "東京",
-            en: "Tokyo",
+            en: "Tōkyō",
             lines: { nozomi: "stop", hikari: "stop", kodama: "stop" },
             transfer: ["新幹線", "東京メトロ線"],
         },
