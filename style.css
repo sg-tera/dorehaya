@@ -1,0 +1,319 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&family=M+PLUS+1:wght@100..900&family=Reddit+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
+/* =========================================
+    基本設定
+   ========================================= */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 10px;
+    background-color: #f4f4f4;
+    font-family: "Kosugi Maru", "Reddit Sans", sans-serif;
+}
+
+.title {
+    text-align: center;
+    font-family: "M PLUS 1", sans-serif;
+    font-weight: 700;
+    margin: 5px 0 15px 0;
+}
+
+.version {
+    text-align: center;
+    font-family: "Reddit Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #666;
+    margin: 0 0 20px 0;
+}
+
+.notice-container {
+    max-width: 100%;
+    overflow: hidden;
+    margin-bottom: 15px;
+    font-family: sans-serif;
+    background-color: #fffae6;
+    border: 2px solid #ffde7c;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: black;
+    border-radius: 6px;
+}
+
+.app-container {
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    /* 角丸を効かせるため */
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+/* --- 変更：上部のタブ（ヘッダー） --- */
+.line-header-tab {
+    width: 100%;
+    padding: 5px 15px;
+    color: #fff;
+    font-weight: bold;
+
+    /* 横並び設定 */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* バッジと文字の間隔 */
+
+    /* タブっぽく見せる装飾 */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* 路線名の文字 */
+.line-name-text {
+    font-family: "M PLUS 1", sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+}
+
+/* 路線記号（バッジ） */
+.line-code-badge {
+    background-color: #fff;
+    color: #333;
+    font-size: 12px;
+    font-family: "Reddit Sans";
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.3);
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* 枠のサイズ固定 */
+    width: 24px;
+    height: 24px;
+
+    padding: 0;
+}
+
+/* --- レイアウト枠 --- */
+.layout-wrapper {
+    display: flex;
+    background-color: #fff;
+    /* 影や角丸は親の app-container に移したので削除またはリセット */
+    box-shadow: none;
+    border-radius: 0;
+    border-top: none;
+    /* ヘッダーとくっつける */
+}
+
+/* 左側：固定エリア（種別ラベル） */
+.legend-col {
+    flex: 0 0 auto;
+    /* 幅を固定、伸縮させない */
+    padding: 20px 10px 20px 10px;
+    /* 右側の余白は少し狭めに */
+    z-index: 2;
+    box-shadow: 5px 0 10px -5px rgba(0, 0, 0, 0.1);
+    /* 境界に少し影を落とす */
+    background-color: #fff;
+}
+
+/* 右側：スクロールエリア（路線図） */
+.scroll-area {
+    flex: 1;
+    overflow-x: auto;
+    padding: 20px;
+}
+
+/* --- 高さ・隙間の同期設定 --- */
+.header-spacer,
+.station-name {
+    height: 120px;
+    margin-bottom: 0px;
+}
+
+.legend-tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* .tracks の gap と同じにする */
+    align-items: flex-end;
+}
+
+.label-box,
+.line {
+    height: 15px;
+    /* 線の太さ */
+}
+
+/* --- 種別ラベル（左側） --- */
+.label-box {
+    font-family: "Kosugi Maru", sans-serif;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    font-size: 13px;
+    color: #fff;
+    border-radius: 3px;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+/* --- 駅リスト（右側） --- */
+.route-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: max-content;
+}
+
+.station {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60px;
+    /* 駅の幅 */
+    flex-shrink: 0;
+    /* ★重要：画面が狭くても駅幅を絶対に縮めない設定 */
+    position: relative;
+}
+
+/* 駅名テキスト */
+.station-name {
+    font-family: sans-serif;
+    font-weight: 600;
+    position: relative;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    font-size: 16px;
+    letter-spacing: 0px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-bottom: 15px;
+}
+
+/* 英語表記 */
+.station-name span.en {
+    font-family: "Reddit Sans";
+    font-weight: normal;
+    position: absolute;
+    /*レイアウトから切り離す*/
+    bottom: 10px;
+    font-size: 12px;
+    color: #666;
+    writing-mode: horizontal-tb;
+    transform: rotate(-90deg);
+    transform-origin: left bottom;
+    margin-left: 0px;
+    white-space: nowrap;
+}
+
+/* --- 線路のデザイン --- */
+
+.tracks {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* ここの隙間を .legend-tracks と合わせる */
+    width: 100%;
+}
+
+.line {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* 背景色はJSから指定されます */
+}
+
+/* 通っていない区間 */
+.line.empty {
+    background-color: transparent !important;
+}
+
+.line.empty::after {
+    display: none;
+}
+
+/* 停車駅の丸（ドット） */
+.line.stop::after {
+    content: '';
+    display: block;
+    width: 13px;
+    height: 13px;
+    background-color: white;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: currentColor;
+    /* 親の色を引き継ぐ */
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+.line.partial1::after {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+
+    /* ▼ ここがポイント：角張らせて回転 */
+    border-radius: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    box-sizing: border-box;
+}
+
+/* 始発・終点のカーブ処理 */
+.line.start {
+    border-top-left-radius: 30px 20px;
+    border-bottom-left-radius: 5px 5px;
+}
+
+.line.end {
+    border-top-right-radius: 30px 20px;
+    border-bottom-right-radius: 5px 5px;
+}
+
+/* --- 乗り換え案内 --- */
+.transfer {
+    margin-top: 15px;
+    font-size: 10.5px;
+    color: #414141;
+    writing-mode: horizontal-tb;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1.4;
+}
+
+.transfer::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: #464646;
+    margin: 0 auto 4px auto;
+}
+
+.station:not(.has-transfer) .transfer {
+    display: none;
+}
