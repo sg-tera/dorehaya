@@ -27,8 +27,8 @@
         ${route.notice && route.notice.text ? `<div class="notice-container">${route.notice.text}</div>` : ''}
           <div class="app-container">
             <div class="line-header-tab" style="background-color: ${routeInfo.color};">
-                <span class="line-code-badge">${routeInfo.code}</span>
-                <span class="line-name-text">${routeInfo.name}</span>
+            ${routeInfo.code != null ? `<span class="line-code-badge">${routeInfo.code}</span>` : ''}
+            <span class="line-name-text">${routeInfo.name}</span>
             </div>
 
             <div class="layout-wrapper">
