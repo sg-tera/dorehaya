@@ -105,6 +105,11 @@ allRoutes.push({
             name: "新大阪",
             en: "Shin-Ōsaka",
             lines: { nozomi: "stop", hikari: "stop", kodama: "stop" },
+            flags: {
+                nozomi: { noEnd: true },
+                hikari: { noEnd: true },
+                kodama: { noEnd: true },
+            },
             transfer: ["JR線", "大阪メトロ御堂筋線"],
         },
     ]
