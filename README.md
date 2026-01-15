@@ -4,10 +4,10 @@ This website provides details on train stopping patterns at each station in Japa
 
 data format  
 
-``` JSON
+```
 allRoutes.push({
     notice: { text: "テキスト" },
-    info: { name: "路線名", color: "#HEX(line color)" },
+    info: { name: "路線名", color: "#HEX(line color)", code: "JR(option: Station nunbering)"},
     types: [
         { id: "type1", name: "種別1", color: "#HEX(type color)" },
         { id: "type2", name: "種別2", color: "#HEX(type color)" }
