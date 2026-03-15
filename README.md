@@ -44,7 +44,7 @@ allRoutes.push({
   - en: requied  
   - lines: requied (out of service => null, stop => "stop", pass => "pass", partial stop => "partial1")  
   - transfer: option  
-  - flags: if you want to express continuous lines, you set "flags".  
-  noStart => NO process indicates Starting trains.  
-  noEnd => NO process indicates distination.  
-  ex) The Hanzomon Line and the Den-en-toshi Line are shown separately, but you want to show that they connect directly at Shibuya Station.  
+  - flags: Set "flags" if you want to indicate continuous lines.
+noStart => Skips the starting station process.
+noEnd => Skips the destination process.
+ex) When you want to define the Hanzomon Line and the Den-en-toshi Line separately, but show that they connect directly at Shibuya Station.
