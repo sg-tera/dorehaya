@@ -38,7 +38,7 @@ allRoutes.push({
 
 - notice: 任意  
 - info: 必須  
-- types: 必須 (Any numbers of types)  
+- types: 必須 (いくつでも)  
 - stations:  
   - name: 必須  
   - en: 必須  
