@@ -52,6 +52,7 @@ body {
 }
 
 .app-container {
+    --station-name-height: 140px;
     max-width: 100%;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -138,8 +139,8 @@ body {
 /* --- 高さ・隙間の同期設定 --- */
 .header-spacer,
 .station-name {
-    height: 140px;
-    margin-bottom: 0px;
+    min-height: var(--station-name-height);
+    margin-bottom: 0;
 }
 
 .legend-tracks {
@@ -196,29 +197,34 @@ body {
     font-family: sans-serif;
     font-weight: 600;
     position: relative;
-    writing-mode: vertical-rl;
-    text-orientation: upright;
     font-size: 16px;
-    letter-spacing: 0px;
+    letter-spacing: 0;
     display: flex;
     align-items: flex-end;
     justify-content: center;
     padding-bottom: 15px;
 }
 
+.station-name .ja {
+    display: block;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    line-height: 1;
+}
+
 /* 英語表記 */
-.station-name span.en {
+.station-name .en {
     font-family: "Reddit Sans";
     font-weight: normal;
     position: absolute;
-    /*レイアウトから切り離す*/
-    bottom: 10px;
+    /* 日本語列の左側に英語を添える */
+    left: calc(50% - 12px);
+    bottom: 13px;
     font-size: 12px;
     color: #666;
     writing-mode: horizontal-tb;
     transform: rotate(-90deg);
     transform-origin: left bottom;
-    margin-left: 0px;
     white-space: nowrap;
 }
 

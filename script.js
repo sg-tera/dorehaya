@@ -3,6 +3,27 @@
 // =========================================
 
 (function () {
+    function syncStationNameHeights() {
+        document.querySelectorAll('.app-container').forEach((container) => {
+            let maxHeight = 0;
+
+            container.querySelectorAll('.station-name').forEach((nameEl) => {
+                const ja = nameEl.querySelector('.ja');
+                const en = nameEl.querySelector('.en');
+
+                const jaHeight = ja ? ja.getBoundingClientRect().height : 0;
+                const enHeight = en ? en.offsetWidth : 0;
+                const requiredHeight = Math.max(jaHeight, enHeight + 10) + 20;
+
+                maxHeight = Math.max(maxHeight, requiredHeight);
+            });
+
+            if (maxHeight > 0) {
+                container.style.setProperty('--station-name-height', `${Math.ceil(maxHeight)}px`);
+            }
+        });
+    }
+
     // データの存在チェック
     if (!window.allRoutes || window.allRoutes.length === 0) {
         console.error("データが見つかりません。");
@@ -54,7 +75,8 @@
             // 駅名
             html += `
                 <div class="station-name">
-                    ${station.name}<span class="en">${station.en}</span>
+                    <span class="ja">${station.name}</span>
+                    ${station.en ? `<span class="en">${station.en}</span>` : ''}
                 </div>
             `;
 
@@ -116,4 +138,12 @@
 
     // 最後に描画
     app.innerHTML = fullHtml;
+
+    syncStationNameHeights();
+
+    if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(syncStationNameHeights);
+    }
+
+    window.addEventListener('resize', syncStationNameHeights);
 })();
