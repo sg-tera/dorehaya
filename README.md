@@ -1,6 +1,7 @@
 # dorehaya
 
-This website provides details on train stopping patterns at each station in Japan.
+This website provides details on train stopping patterns at each station in Japan.  
+[日本語のドキュメント(内容は同じ)](/README_JP.md)
 
 data format  
 
@@ -44,7 +45,7 @@ allRoutes.push({
   - en: requied  
   - lines: requied (out of service => null, stop => "stop", pass => "pass", partial stop => "partial1")  
   - transfer: option  
-  - flags: Set "flags" if you want to indicate continuous lines.  
+  - flags: Set "flags" if you want to indicate continuous lines. Set for each types.  
 noStart => Skips the starting station process.  
 noEnd => Skips the destination process.  
 ex) When you want to define the Hanzomon Line and the Den-en-toshi Line separately, but show that they connect directly at Shibuya Station.  
