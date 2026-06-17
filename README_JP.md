@@ -4,7 +4,7 @@
 
 データ形式 *コピペして使用してください。既存の路線の記述も併せて参考にしてください。  
 
-```
+``` js
 allRoutes.push({
     notice: { text: "テキスト" },
     info: { name: "路線名", color: "#HEX(line color)", code: "JR(option: Station nunbering)"},

@@ -5,7 +5,7 @@ This website provides details on train stopping patterns at each station in Japa
 
 data format  
 
-```
+``` js
 allRoutes.push({
     notice: { text: "テキスト" },
     info: { name: "路線名", color: "#HEX(line color)", code: "JR(option: Station nunbering)"},
