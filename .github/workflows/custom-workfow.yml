@@ -29,18 +29,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Pagesのセットアップ
+      # 2. noscriptを自動生成
+      - name: Generate noscript SEO content
+        run: node generate-noscript.js
+
+      # 3. Pagesのセットアップ
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # 3. アーティファクトのアップロード
+      # 4. アーティファクトのアップロード
       # ビルド不要なので、カレントディレクトリ(.)をそのままzipしてアップロード
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
 
-      # 4. デプロイ実行
+      # 5. デプロイ実行
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
