@@ -49,4 +49,3 @@ allRoutes.push({
 noStart => Skips the starting station process.  
 noEnd => Skips the destination process.  
 ex) When you want to define the Hanzomon Line and the Den-en-toshi Line separately, but show that they connect directly at Shibuya Station.  
-hoge
